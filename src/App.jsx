@@ -10,6 +10,7 @@ function App() {
     <>
     <div>
       <h1>Hello</h1>
+      <h2>helo linux</h2>
     </div>
     </>
   )
