@@ -1,19 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+
+import React, { useContext } from 'react';
+
+// Buat konteks pertama
+const UserContext = React.createContext();
+// Komponen anak yang mengakses nilai konteks
+function Profile() {
+  const user = useContext(UserContext);
 
   return (
-    <>
-    <div>
-      <h1>Hello</h1>
-      <h2>helo linux</h2>
+    <div className="bg-slate-400 w-1/4">
+      <h2 >Profil Pengguna</h2>
+      <p>Nama: {user.name}</p>
+      <p>Usia: {user.age}</p>
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+
+// Komponen induk yang menyediakan nilai konteks
+function App() {
+  const user = { name: 'afadf Doe', age: 30 };
+
+  return (
+    <UserContext.Provider value={user}>
+        <Profile />
+    </UserContext.Provider>
+  );
+}
+
+
+export default App;
