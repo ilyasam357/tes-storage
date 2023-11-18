@@ -1,33 +1,23 @@
-
-
-import React, { useContext } from 'react';
-
-// Buat konteks pertama
-const UserContext = React.createContext();
-// Komponen anak yang mengakses nilai konteks
-function Profile() {
-  const user = useContext(UserContext);
-
-  return (
-    <div className="bg-slate-400 w-1/4">
-      <h2 >Profil Pengguna</h2>
-      <p>Nama: {user.name}</p>
-      <p>Usia: {user.age}</p>
-    </div>
-  );
-}
-
+import { Link, Outlet } from "react-router-dom";
 
 // Komponen induk yang menyediakan nilai konteks
 function App() {
-  const user = { name: 'afadf Doe', age: 30 };
 
   return (
-    <UserContext.Provider value={user}>
-        <Profile />
-    </UserContext.Provider>
+    <>
+      <div className={"flex gap-8 h-screen"}>
+        <div className={"h-full border-2 border-green-500"}>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="contact">Contact</Link></li>
+            <li><Link to="about">About</Link></li>
+          </ul>
+        </div>
+        <div><Outlet /></div>
+      </div>
+    </> 
   );
 }
 
 
-export default App;
+export default App; 
